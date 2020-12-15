@@ -1,8 +1,10 @@
-class Node:  # Si no funciona estructura actual. Poner next apellidos y nombre
+class Node:
     def __init__(self, nombre=None, apellido_paterno=None, apellido_materno=None):
+        # Atributos del nodo actual
         self.nombre = nombre
         self.apellido_paterno = apellido_paterno
         self.apellido_materno = apellido_materno
+        #Apuntadores
         self.next_nombre = None
         self.next_apellido_paterno = None
         self.next_apellido_materno = None
@@ -11,52 +13,52 @@ class Node:  # Si no funciona estructura actual. Poner next apellidos y nombre
 class List:
 
     def __init__(self):
-        self.head = Node()
+        self.head = Node() # Nodo cabeza
         self.recovery_node = Node()  # Ultimo nodo insertado
 
-    def append_node(self, node):
+    def append_node(self, node): # Metodo para reinsertar nodo nombre
         new_node = node
         current_node = self.head
         while current_node.next_nombre is not None:
             current_node = current_node.next_nombre
         current_node.next_nombre = new_node
 
-    def append_node_apellido_paterno(self, node):
+    def append_node_apellido_paterno(self, node): # Metodo para reinsertar nodo apellido paterno
         new_node = node
         current_node = self.head
         while current_node.next_apellido_paterno is not None:
             current_node = current_node.next_apellido_paterno
         current_node.next_apellido_paterno = new_node
 
-    def append_node_apellido_materno(self, node):
+    def append_node_apellido_materno(self, node): # Metodo para reinsertar nodo apellido materno
         new_node = node
         current_node = self.head
         while current_node.next_apellido_materno is not None:
             current_node = current_node.next_apellido_materno
         current_node.next_apellido_materno = new_node
 
-    def is_empty(self):
+    def is_empty(self): # Metodo si el siguiente nodo nombre esta vacio
         current_node = self.head
-        if current_node.next_nombre is None:  # and self.head.next_node is None:
+        if current_node.next_nombre is None:
             return True
         else:
             return False
 
-    def is_empty2(self):
+    def is_empty2(self): # Metodo si el siguiente nodo apellido paterno esta vacio
         current_node = self.head
-        if current_node.next_apellido_paterno is None:  # and self.head.next_node is None:
+        if current_node.next_apellido_paterno is None:
             return True
         else:
             return False
 
-    def is_empty3(self):
+    def is_empty3(self): # Metodo si el siguiente nodo apellido materno esta vacio
         current_node = self.head
-        if current_node.next_apellido_materno is None:  # and self.head.next_node is None:
+        if current_node.next_apellido_materno is None:
             return True
         else:
             return False
 
-    def display_by_nombre(self):
+    def display_by_nombre(self): # Metodo para desplegar nombres
         names = []
         current_node = self.head
         while current_node.next_nombre is not None:
@@ -67,7 +69,7 @@ class List:
             names.append("->")
         print(names)
 
-    def display_by_apellido_paterno(self):
+    def display_by_apellido_paterno(self): # Metodo para desplegar apellidos paternos
         apellido = []
         current_node = self.head
         while current_node.next_apellido_paterno is not None:
@@ -78,7 +80,7 @@ class List:
             apellido.append("->")
         print(apellido)
 
-    def display_by_apellido_materno(self):
+    def display_by_apellido_materno(self): # Metodos para desplegar apellidos maternos
         apellido = []
         current_node = self.head
         while current_node.next_apellido_materno is not None:
@@ -89,7 +91,7 @@ class List:
             apellido.append("->")
         print(apellido)
 
-    def append_nombre(self, nombre, apellido_paterno, apellido_materno):  # este metodo
+    def append_nombre(self, nombre, apellido_paterno, apellido_materno):  # Metodo para insertar nombre
 
         new_node = Node(nombre, apellido_paterno, apellido_materno)
         node_cabeza = self.head
@@ -144,7 +146,7 @@ class List:
             node_anterior.next_nombre = node_cabeza.next_nombre  # set el ultimo nodo
             # self.display_name()
 
-    def append_apellido_paterno(self, nombre, apellido_paterno, apellido_materno):  # este metodo
+    def append_apellido_paterno(self, nombre, apellido_paterno, apellido_materno):  # Metodo para insertar apellido paterno
         #print("inica ")
         new_node = Node(nombre, apellido_paterno, apellido_materno)
         node_cabeza = self.head
@@ -199,7 +201,7 @@ class List:
             node_anterior.next_apellido_paterno = node_cabeza.next_apellido_paterno  # set el ultimo nodo
             # self.display_name()
 
-    def append_apellido_materno(self, nombre, apellido_paterno, apellido_materno):  # este metodo
+    def append_apellido_materno(self, nombre, apellido_paterno, apellido_materno):  # Metodo para insertar apellido materno
         #print("inica ")
         new_node = Node(nombre, apellido_paterno, apellido_materno)
         node_cabeza = self.head
@@ -258,24 +260,6 @@ list = List()
 
 def main():
 
-
-    '''list.append_nombre("Pablo Hernan", "Luna", "Rosas")  # 2
-
-    list.append_nombre("Juan de Jesus", "Arellano", "Gomez")  # 3
-    list.append_nombre("Vicente", "Cuevas", "Cruz")  # 5
-    list.append_nombre("Erick Gerardo", "Garcia", "Morales")  # 2
-    list.display_by_nombre()
-    list.append_apellido_paterno("Pablo Hernan", "Luna", "Rosas")  # 2
-    list.append_apellido_paterno("Juan de Jesus", "Arellano", "Gomez")  # 3
-    list.append_apellido_paterno("Vicente", "Cuevas", "Cruz")  # 5
-    list.append_apellido_paterno("Erick Gerardo", "Garcia", "Morales")  # 2
-    list.display_by_apellido_paterno()
-    list.append_apellido_materno("Pablo Hernan", "Luna", "Rosas")  # 2
-    list.append_apellido_materno("Juan de Jesus", "Arellano", "Gomez")  # 3
-    list.append_apellido_materno("Vicente", "Cuevas", "Cruz")  # 5
-    list.append_apellido_materno("Erick Gerardo", "Garcia", "Morales")  # 2
-    list.display_by_apellido_materno()'''
-
     print("Bienvenido\n1) Insertar Nombre\n2)Mostrar por nombre\n3)Mostrar por apellido paterno\n4)Mostrar por apellido materno\n5)Salir")
 
     option = input("Seleccione una opcion: ")
@@ -287,7 +271,6 @@ def main():
         list.append_nombre(nombre,apelldio_paterno,apellido_materno)
         list.append_apellido_paterno(nombre, apelldio_paterno, apellido_materno)
         list.append_apellido_materno(nombre, apelldio_paterno, apellido_materno)
-        list.display_by_nombre()
         main()
     elif option == "2":
         list.display_by_nombre()
